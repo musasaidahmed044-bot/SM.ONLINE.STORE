@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Online SM Store — fashion, football jerseys, bags and accessories." />
+  <title>Online SM Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="#home" aria-label="Online SM Store home">
+        <span class="brand-mark">SM</span>
+        <span>ONLINE SM STORE</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#men">Men</a>
+        <a href="#women">Women</a>
+        <a href="#kids">Kids</a>
+        <a href="#accessories">Accessories</a>
+        <a href="#help">Help</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="signinBtn" title="Sign in">Sign in</button>
+        <button class="cart-btn" id="cartBtn" title="Open cart">
+          Cart <span id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">YOUR STYLE. YOUR STORE.</p>
+        <h1>ONLINE SM STORE</h1>
+        <p class="hero-copy">Shop fashion, football jerseys, bags and accessories in one simple place.</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#men">Shop men</a>
+          <a class="btn btn-outline" href="#women">Shop women</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <span>NEW</span>
+        <strong>Fresh drops</strong>
+        <small>Black & white storefront</small>
+      </div>
+    </section>
+
+    <section class="quick-links" aria-label="Shop categories">
+      <a href="#men"><span>01</span><strong>MEN</strong><small>Jerseys & fashion</small></a>
+      <a href="#women"><span>02</span><strong>WOMEN</strong><small>Bags & fashion</small></a>
+      <a href="#kids"><span>03</span><strong>KIDS</strong><small>Coming soon</small></a>
+      <a href="#accessories"><span>04</span><strong>ACCESSORIES</strong><small>Extras & more</small></a>
+    </section>
+
+    <section class="section" id="men">
+      <div class="section-heading">
+        <div><p class="eyebrow">COLLECTION 01</p><h2>Men</h2></div>
+        <span>Football & streetwear</span>
+      </div>
+      <div class="product-grid" id="menProducts"></div>
+    </section>
+
+    <section class="section" id="women">
+      <div class="section-heading">
+        <div><p class="eyebrow">COLLECTION 02</p><h2>Women</h2></div>
+        <span>Bags & everyday style</span>
+      </div>
+      <div class="product-grid" id="womenProducts"></div>
+    </section>
+
+    <section class="section split-section" id="kids">
+      <div class="empty-category">
+        <p class="eyebrow">COLLECTION 03</p>
+        <h2>Kids</h2>
+        <p>Kids' collection can be added here. The store is ready for more products.</p>
+        <button class="btn btn-dark" onclick="showHelp()">Ask about kids items</button>
+      </div>
+    </section>
+
+    <section class="section split-section" id="accessories">
+      <div class="empty-category">
+        <p class="eyebrow">COLLECTION 04</p>
+        <h2>Accessories</h2>
+        <p>Add watches, caps, wallets, belts and other accessories to this section.</p>
+        <button class="btn btn-dark" onclick="showHelp()">Ask about accessories</button>
+      </div>
+    </section>
+
+    <section class="help-section" id="help">
+      <div>
+        <p class="eyebrow">NEED HELP?</p>
+        <h2>We're here to help.</h2>
+        <p>Ask about sizes, availability, delivery, payment or your order.</p>
+      </div>
+      <div class="help-actions">
+        <button class="btn btn-light" onclick="showHelp()">Help centre</button>
+        <button class="btn btn-outline light-outline" onclick="contactWhatsApp()">WhatsApp us</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>ONLINE SM STORE</strong>
+      <p>Simple shopping. Clean style.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#men">Men</a><a href="#women">Women</a><a href="#kids">Kids</a><a href="#accessories">Accessories</a>
+    </div>
+    <small>© <span id="year"></span> Online SM Store</small>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="drawer-head">
+      <h2>Your cart</h2>
+      <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-summary">
+      <div><span>Subtotal</span><strong id="cartTotal">KSh 0</strong></div>
+      <button class="btn btn-dark full" onclick="openCheckout()">Place order</button>
+      <button class="btn btn-outline dark-outline full" onclick="contactWhatsApp()">Ask on WhatsApp</button>
+    </div>
+  </aside>
+
+  <!-- Sign-in modal -->
+  <div class="modal-wrap" id="signinModal">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal('signinModal')">×</button>
+      <p class="eyebrow">ACCOUNT</p>
+      <h2>Sign in</h2>
+      <p class="muted">Demo account screen for the storefront. Your details stay in this browser.</p>
+      <label>Name<input id="loginName" type="text" placeholder="Your name" /></label>
+      <label>Email<input id="loginEmail" type="email" placeholder="you@example.com" /></label>
+      <label>Password<input id="loginPassword" type="password" placeholder="••••••••" /></label>
+      <button class="btn btn-dark full" onclick="signIn()">Sign in</button>
+      <p id="loginStatus" class="status"></p>
+    </div>
+  </div>
+
+  <!-- Checkout modal -->
+  <div class="modal-wrap" id="checkoutModal">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal('checkoutModal')">×</button>
+      <p class="eyebrow">CHECKOUT</p>
+      <h2>Place your order</h2>
+      <label>Full name<input id="orderName" type="text" placeholder="Your full name" /></label>
+      <label>Phone number<input id="orderPhone" type="tel" placeholder="07XX XXX XXX" /></label>
+      <label>Delivery location<input id="orderLocation" type="text" placeholder="Town / estate / area" /></label>
+      <label>Order notes<textarea id="orderNotes" rows="3" placeholder="Size, colour, delivery details..."></textarea></label>
+      <div class="checkout-total"><span>Total</span><strong id="checkoutTotal">KSh 0</strong></div>
+      <button class="btn btn-dark full" onclick="placeOrder()">Place order via WhatsApp</button>
+      <p class="muted tiny">Your order is sent to the store's WhatsApp so the seller can confirm availability, delivery and payment.</p>
+    </div>
+  </div>
+
+  <!-- Help modal -->
+  <div class="modal-wrap" id="helpModal">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal('helpModal')">×</button>
+      <p class="eyebrow">HELP</p>
+      <h2>How can we help?</h2>
+      <div class="help-list">
+        <div><strong>Ordering</strong><span>Add an item to cart, then select “Place order”.</span></div>
+        <div><strong>Sizes</strong><span>Ask for available sizes on WhatsApp before paying.</span></div>
+        <div><strong>Delivery</strong><span>Send your location and the store will confirm delivery details.</span></div>
+        <div><strong>Returns</strong><span>Confirm the store's return policy before completing payment.</span></div>
+      </div>
+      <button class="btn btn-dark full" onclick="contactWhatsApp()">Contact on WhatsApp</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
